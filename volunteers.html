@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Волонтерство | SpaceHub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #0b0b1d;
+      color: #fff;
+      overflow-x: hidden;
+    }
+header {
+	padding: 0px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 2px solid #a48dfc;
+	background: #1a1a1a;
+}
+
+.site-header {
+	background: #1b1b2f;
+	padding: 0px;
+	display: flex;
+	justify-content: center;
+	position: relative;
+	z-index: 2;
+}
+
+.header-inner {
+	width: 100%;
+	max-width: 1200px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logo img {
+	padding: 0px;
+	height: 100px;
+	display: block;
+
+}
+
+.btn-insta {
+	background: #b993fe;
+	color: #fff;
+	padding: 10px 20px;
+	border-radius: 30px;
+	text-decoration: none;
+	transition: background 0.3s;
+}
+
+.btn-insta:hover {
+	background: #a17bd9;
+}
+
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 6px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* Анімація хрестика */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Меню */
+.nav-menu {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Посилання в меню */
+.nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.nav-menu a:hover {
+  color: #b993fe;
+}
+
+/* 📱 Для мобільних */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 250px;
+    background: #1b1b2f;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    transition: right 0.4s ease;
+    z-index: 1000;
+  }
+
+  .nav-menu.active {
+    right: 0;
+  }
+}
+
+    /* HERO */
+    .hero {
+      height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle at 20% 20%, #3c1e70, #0b0b1d);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #b993fe, #7e60fa);
+  background-clip: text;              
+  -webkit-background-clip: text;      
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+  animation: fadeInDown 1s ease-in-out;
+}
+    .hero p {
+      max-width: 700px;
+      font-size: 1.3rem;
+      margin-bottom: 30px;
+      color: #ddd;
+      animation: fadeInUp 1.2s ease-in-out;
+    }
+    .hero .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 15px 30px;
+      border-radius: 30px;
+      background: #b993fe;
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 0 20px #b993fe80;
+    }
+    .hero .btn:hover {
+      background: #a17bd9;
+      transform: scale(1.08);
+    }
+
+    /* ABOUT */
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+      padding: 100px 10%;
+    }
+    .about img {
+      flex: 1 1 40%;
+      border-radius: 20px;
+      box-shadow: 0 0 30px #7e60fa60;
+    }
+    .about-text {
+      flex: 1 1 50%;
+    }
+    .about-text h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #b993fe;
+    }
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #ccc;
+    }
+
+    /* CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 25px;
+      padding: 80px 10%;
+    }
+    .card {
+      background: #1b1b2f;
+      border-radius: 20px;
+      padding: 40px 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 0 15px #000;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 30px #b993fe80;
+    }
+    .card i {
+      font-size: 40px;
+      margin-bottom: 15px;
+      color: #b993fe;
+    }
+    .card h3 {
+      font-size: 1.3rem;
+    }
+
+    /* STATS */
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      padding: 80px 10%;
+      background: linear-gradient(135deg, #1b1b2f, #0f0f1d);
+    }
+    .stat {
+      flex: 1 1 250px;
+      text-align: center;
+      padding: 40px 20px;
+      border-radius: 20px;
+      background: #13132b;
+      box-shadow: 0 0 25px #7e60fa60;
+      transition: transform 0.3s;
+    }
+    .stat:hover {
+      transform: scale(1.05);
+    }
+    .stat h3 {
+      font-size: 3rem;
+      color: #b993fe;
+    }
+    .stat p {
+      margin-top: 10px;
+      font-size: 1.1rem;
+      color: #ccc;
+    }
+
+    /* MOTIVATION */
+    .motivation {
+      text-align: center;
+      padding: 120px 20px;
+    }
+    .motivation h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #ff7eb3, #b993fe);
+  background-clip: text;              
+  -webkit-background-clip: text;      /* для Webkit-браузеров */
+  -webkit-text-fill-color: transparent;
+}
+    .motivation p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: auto;
+      color: #ddd;
+    }
+
+    /* JOIN */
+    .join {
+      text-align: center;
+      padding: 100px 20px;
+      background: #1b1b2f;
+    }
+    .join h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #b993fe;
+    }
+    .join a {
+      margin: 10px;
+      display: inline-block;
+      padding: 15px 30px;
+      border-radius: 30px;
+      background: #b993fe;
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 0 15px #7e60fa80;
+    }
+    .join a:hover {
+      transform: scale(1.08);
+      background: #a17bd9;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeInUp {from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <img src="./img/logo-removebg-preview (3).png" alt="SpaceHub Logo">
+    </div>
+
+    <!-- Гамбургер -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- Меню -->
+    <nav class="nav-menu">
+      <a href="index.html">Головна</a>
+      <a href="about.html">Про нас</a>
+      <a href="projects.html">Проєкти</a>
+      <a href="volunteers.html">Волонтерство</a>
+      <a href="team.html" class="active">Команда</a>
+      <a href="contacts.html">Контакти</a>
+      <a class="btn btn-insta" href="https://www.instagram.com/_space.hub/" target="_blank">Instagram</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Стань репетитором-волонтером</h1>
+  <p>Долучись до SpaceHub і допоможи іншим учням досягати більше. Твої знання можуть стати новою зіркою на освітньому небі 🚀</p>
+  <a href="https://linktr.ee/SpaceHub_" class="btn">Подати заявку</a>
+  <a href="https://t.me/SpaceHub_manager" class="btn"><i class="fa-brands fa-telegram"></i> Написати менеджеру</a>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <img src="./img/volunteers.jpg" alt="Volunteers">
+  <div class="about-text">
+    <h2>Хто такі репетитори-волонтери?</h2>
+    <p>Ми — молодь, яка безкоштовно допомагає учням у навчанні. Тут ти можеш розкрити свій потенціал, знайти однодумців та зробити реальні зміни для тих, хто цього найбільше потребує.</p>
+    <p>Це не просто підтримка у шкільних предметах — це шанс навчитися працювати в команді, покращити свої комунікаційні навички та здобути досвід, який стане у нагоді в майбутньому.</p>
+  </div>
+</section>
+
+<!-- CARDS -->
+<section class="cards">
+  <div class="card"><i class="fa-solid fa-user-graduate"></i><h3>Вік від 14 років</h3></div>
+  <div class="card"><i class="fa-solid fa-book"></i><h3>Знання шкільних предметів</h3></div>
+  <div class="card"><i class="fa-solid fa-users"></i><h3>Командна робота</h3></div>
+  <div class="card"><i class="fa-solid fa-heart"></i><h3>Бажання допомагати</h3></div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stat"><h3 data-count="65">0</h3><p>Учнів отримали підтримку</p></div>
+  <div class="stat"><h3 data-count="970">0</h3><p>Годин волонтерства</p></div>
+  <div class="stat"><h3 data-count="300">0</h3><p>Учасників курсів</p></div>
+</section>
+
+<!-- MOTIVATION -->
+<section class="motivation">
+  <h2>Твої знання можуть змінити життя інших</h2>
+  <p>Приєднуючись до SpaceHub, ти стаєш частиною інноваційної команди, яка робить освіту доступною.  
+     Це можливість не лише навчати, а й вчитися новому самому — від технологій до лідерства.</p>
+</section>
+
+<!-- JOIN -->
+<section class="join">
+  <h2>Приєднуйся до нас 🌟</h2>
+  <a href="https://linktr.ee/SpaceHub_">Заповнити форму</a>
+  <a href="https://t.me/SpaceHub_manager"><i class="fa-brands fa-telegram"></i> Написати менеджеру</a>
+</section>
+
+<script>
+  // гамбургер
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("nav-menu");
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+  });
+
+  // анімація цифр
+  const counters = document.querySelectorAll('.stat h3');
+  counters.forEach(counter => {
+    let target = +counter.dataset.count;
+    let count = 0;
+    let step = target / 80;
+    function updateCounter() {
+      count += step;
+      if(count < target){
+        counter.textContent = Math.floor(count);
+        requestAnimationFrame(updateCounter);
+      } else {
+        counter.textContent = target + "+";
+      }
+    }
+    updateCounter();
+  });
+</script>
+
+</body>
+</html>
