@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Про нас | SpaceHub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #0b0b1d;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      padding: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #a48dfc;
+      background: #1a1a1a;
+    }
+
+    .site-header {
+      background: #1b1b2f;
+      padding: 0px;
+      display: flex;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .header-inner {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      padding: 0px;
+      height: 100px;
+      display: block;
+    }
+
+    .btn-insta {
+      background: #b993fe;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn-insta:hover {
+      background: #a17bd9;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 6px;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      width: 30px;
+      height: 3px;
+      background: #fff;
+      border-radius: 3px;
+      transition: 0.3s;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 6px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    .nav-menu a:hover {
+      color: #b993fe;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 250px;
+        background: #1b1b2f;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: right 0.4s ease;
+        z-index: 1000;
+      }
+
+      .nav-menu.active {
+        right: 0;
+      }
+    }
+
+    /* HERO SECTION */
+    .hero-about {
+      height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(circle at 20% 20%, #3c1e70, #0b0b1d);
+      position: relative;
+      overflow: hidden;
+      padding: 0 20px;
+    }
+
+    .hero-about::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.5"/></pattern></defs><rect x="0" y="0" width="100" height="100" fill="url(%23stars)"/></svg>');
+      opacity: 0.3;
+      animation: twinkle 8s infinite alternate;
+    }
+
+    .hero-about h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #b993fe, #7e60fa, #ff7eb3);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 20px;
+      animation: fadeInDown 1s ease-in-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-about p {
+      max-width: 800px;
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      color: #ddd;
+      animation: fadeInUp 1.2s ease-in-out;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* MISSION & VISION */
+    .mission-vision {
+      padding: 100px 10%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .mission, .vision {
+      background: linear-gradient(135deg, #1b1b2f, #13132b);
+      padding: 50px 40px;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mission::before, .vision::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #b993fe, #7e60fa);
+    }
+
+    .mission:hover, .vision:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(126, 96, 250, 0.2);
+    }
+
+    .mission h2, .vision h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: #b993fe;
+    }
+
+    .mission p, .vision p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #ccc;
+    }
+
+    /* HISTORY */
+    .history {
+      padding: 100px 10%;
+      text-align: center;
+      background: linear-gradient(135deg, #0f0f1d, #1b1b2f);
+      position: relative;
+    }
+
+    .history::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(126,96,250,0.1)" stroke-width="1"/></pattern></defs><rect x="0" y="0" width="100" height="100" fill="url(%23grid)"/></svg>');
+    }
+
+    .history h2 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+      background: linear-gradient(90deg, #ff7eb3, #b993fe);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      z-index: 1;
+    }
+
+    .history-content {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .history-content p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #ddd;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+
+    .history-image {
+      margin-top: 50px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s;
+    }
+
+    .history-image:hover {
+      transform: scale(1.02);
+    }
+
+    .history-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* VALUES */
+    .values {
+      padding: 100px 10%;
+      text-align: center;
+    }
+
+    .values h2 {
+      font-size: 3rem;
+      margin-bottom: 60px;
+      background: linear-gradient(90deg, #b993fe, #7e60fa);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .value-card {
+      background: linear-gradient(135deg, #1b1b2f, #13132b);
+      padding: 40px 30px;
+      border-radius: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(185, 147, 254, 0.1), rgba(126, 96, 250, 0.1));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .value-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(126, 96, 250, 0.3);
+    }
+
+    .value-card:hover::before {
+      opacity: 1;
+    }
+
+    .value-icon {
+      font-size: 50px;
+      margin-bottom: 20px;
+      color: #b993fe;
+      position: relative;
+      z-index: 1;
+    }
+
+    .value-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .value-card p {
+      color: #ccc;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* PARTNERS & ACHIEVEMENTS */
+    .partners-achievements {
+      padding: 100px 10%;
+      background: linear-gradient(135deg, #1b1b2f, #0f0f1d);
+      text-align: center;
+    }
+
+    .partners-achievements h2 {
+      font-size: 3rem;
+      margin-bottom: 60px;
+      background: linear-gradient(90deg, #ff7eb3, #b993fe);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 40px;
+      margin-bottom: 80px;
+    }
+
+    .partner-logo {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 15px;
+      transition: transform 0.3s, background 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .partner-logo:hover {
+      transform: scale(1.1);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .partner-logo img {
+      max-width: 100%;
+      height: auto;
+      filter: brightness(0) invert(1);
+      opacity: 0.8;
+    }
+
+    .achievements {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+
+    .achievement {
+      background: linear-gradient(135deg, #13132b, #1b1b2f);
+      padding: 40px 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .achievement:hover {
+      transform: translateY(-5px);
+    }
+
+    .achievement h3 {
+      font-size: 3rem;
+      color: #b993fe;
+      margin-bottom: 10px;
+    }
+
+    .achievement p {
+      color: #ccc;
+      font-size: 1.1rem;
+    }
+
+    /* CTA SECTION */
+    .cta-section {
+      text-align: center;
+      padding: 120px 20px;
+      background: radial-gradient(circle at 50% 50%, #3c1e70, #0b0b1d);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars2" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="0.5" fill="white" opacity="0.7"/></pattern></defs><rect x="0" y="0" width="100" height="100" fill="url(%23stars2)"/></svg>');
+      opacity: 0.4;
+      animation: twinkle 6s infinite alternate;
+    }
+
+    .cta-section h2 {
+      font-size: 3rem;
+      margin-bottom: 30px;
+      background: linear-gradient(90deg, #b993fe, #7e60fa, #ff7eb3);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-section p {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      color: #ddd;
+      position: relative;
+      z-index: 1;
+    }
+
+    .join-button {
+      display: inline-block;
+      padding: 18px 40px;
+      border-radius: 35px;
+      background: linear-gradient(90deg, #b993fe, #7e60fa);
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 10px 25px rgba(126, 96, 250, 0.4);
+      position: relative;
+      z-index: 1;
+      font-size: 1.2rem;
+    }
+
+    .join-button:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(126, 96, 250, 0.6);
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .mission-vision {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .hero-about h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-about p {
+        font-size: 1.2rem;
+      }
+
+      .history h2,
+      .values h2,
+      .partners-achievements h2,
+      .cta-section h2 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <img src="./img/logo-removebg-preview (3).png" alt="SpaceHub Logo">
+    </div>
+
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <nav class="nav-menu" id="nav-menu">
+      <a href="index.html">Головна</a>
+      <a href="about.html" class="active">Про нас</a>
+      <a href="projects.html">Проєкти</a>
+      <a href="volunteers.html">Волонтерство</a>
+      <a href="team.html">Команда</a>
+      <a href="contacts.html">Контакти</a>
+      <a class="btn btn-insta" href="https://www.instagram.com/_space.hub/" target="_blank">Instagram</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero-about">
+  <h1>Про нас</h1>
+  <p>SpaceHub — це спільнота, де народжуються ідеї та реалізуються мрії. Ми об'єднуємо молодих та амбітних, щоб разом творити майбутнє.</p>
+</section>
+
+<section class="mission-vision">
+  <div class="mission">
+    <h2>Наша місія</h2>
+    <p>Ми працюємо над тим, щоб освіта в Україні була доступною, сучасною, захопливою та розкривала потенціал кожного. Навчання - це не просто нудні тексти з підручника, а навпаки - це космос нових можливостей та цікавинок, стимул до самореалізації.</p>
+  </div>
+
+  <div class="vision">
+    <h2>Наше бачення</h2>
+    <p>Ми прагнемо мати суспільство, у якому кожен має рівний доступ до знань, розвиває свої здібності та робить свій вагомий внесок в освітню сферу.</p>
+  </div>
+</section>
+
+<section class="history">
+  <h2>Наша історія</h2>
+  <div class="history-content">
+    <p>Усе почалося з невеликої ініціативи - бажання створити простір, де освіта була б не формальністю, а натхненням. Ми організовували перші курси англійської, італійської та іспанської, створили Speaking Club, провели вебінар про НМТ, а надалі заснували нові курси з англійською від 0, можливості стажування, об’єднуючи людей, які прагнуть розвиватися та ділитися знаннями. Відтак ця ідея переросла у активну, креативну та небайдужу спільноту. Саме так народився Space Hub - простір, де освіта надихає, горизонти розширюються, ком’юніті постійно підтримує, а Ви є частиною великої спільноти, що змінює майбутнє освіти.</p>
+  </div>
+  <div class="history-image">
+    <img src="./img/team-photo.jpg" alt="Команда SpaceHub">
+  </div>
+</section>
+
+<section class="values">
+  <h2>Наші цінності та підхід</h2>
+  <div class="values-content" style="max-width: 900px; margin: 0 auto; text-align: left; color: #ccc; font-size: 1.1rem; line-height: 1.7;">
+    <p style="margin-bottom: 0;">Ми віримо, що освіта - це не лише знання, а передусім розвиток особистості, отримання задоволення та любов до пізнання. У своїй діяльності ми дотримуємося принципів відкритості, взаємоповаги й підтримки. Наш підхід базується на партнерстві та взаємному збагаченні: ми створюємо простір, де кожен може не лише навчати, а й здобути знання, ділитися досвідом, надихати й зростати разом. Ми цінуємо щирість, ініціативність і готовність відкривати нове разом.</p>
+  </div>
+</section>
+
+<section class="partners-achievements">
+  <h2>Партнери та досягнення</h2>
+
+  <div class="partners-grid">
+    <div class="partner-logo">
+      <img src="./img/partner1.png" alt="Партнер 1">
+    </div>
+    <div class="partner-logo">
+      <img src="./img/partner2.png" alt="Партнер 2">
+    </div>
+    <div class="partner-logo">
+      <img src="./img/partner3.png" alt="Партнер 3">
+    </div>
+    <div class="partner-logo">
+      <img src="./img/partner4.png" alt="Партнер 4">
+    </div>
+  </div>
+
+  <div class="achievements">
+    <div class="achievement">
+      <h3 data-count="1000">0</h3>
+      <p>Учнів отримали допомогу</p>
+    </div>
+    <div class="achievement">
+      <h3 data-count="150">0</h3>
+      <p>Волонтерів у команді</p>
+    </div>
+    <div class="achievement">
+      <h3 data-count="50">0</h3>
+      <p>Партнерських організацій</p>
+    </div>
+    <div class="achievement">
+      <h3 data-count="10000">0</h3>
+      <p>Годин навчання</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Стань частиною нашої історії</h2>
+  <p>Приєднуйся до SpaceHub та допоможи нам робити освіту доступнішою для кожної дитини в Україні.</p>
+  <a href="https://linktr.ee/SpaceHub_" class="join-button">Долучитися до команди</a>
+</section>
+
+<script>
+  // гамбургер меню
+  const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("nav-menu");
+
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+  });
+
+  // анімація цифр
+  const counters = document.querySelectorAll('.achievement h3');
+
+  const animateCounter = (counter) => {
+    const target = +counter.dataset.count;
+    let count = 0;
+    const increment = target / 100;
+    const updateCount = () => {
+      if (count < target) {
+        count += increment;
+        counter.textContent = Math.floor(count);
+        requestAnimationFrame(updateCount);
+      } else {
+        counter.textContent = target + "+";
+      }
+    };
+    updateCount();
+  };
+
+  // Запуск анімації при скролі
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(counter => {
+    observer.observe(counter);
+  });
+</script>
+
+</body>
+</html>
