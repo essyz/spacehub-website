@@ -264,101 +264,104 @@ header.site-header {
   transform: scale(1.08);
 }
 
-      /* PROCESS SECTION */
-    .process {
-      background: radial-gradient(circle at top, #b993fe20 0%, #7e60fa10 100%);
-      color: #fff;
-      padding: 100px 40px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
+  /* PROCESS SECTION */
+  .process {
+  background: radial-gradient(circle at top, #b993fe20 0%, #7e60fa10 100%);
+  color: #fff;
+  padding: 100px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  }
 
-    .process::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, #b993fe20, transparent 60%);
-      animation: pulse 6s infinite alternate;
-      z-index: 0;
-    }
+  .process::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, #b993fe20, transparent 60%);
+  animation: pulse 6s infinite alternate;
+  z-index: 0;
+  }
 
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 0.6; }
-      100% { transform: scale(1.2); opacity: 0.3; }
-    }
+  @keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.2); opacity: 0.3; }
+  }
 
-    .process h2 {
-      font-size: 3rem;
-      background: linear-gradient(90deg, #b993fe, #7e60fa);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 10px;
-      z-index: 1;
-      position: relative;
-    }
+  .process h2 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, #b993fe, #7e60fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+  z-index: 1;
+  position: relative;
+  }
 
-    .process .subtitle {
-      font-size: 1.2rem;
-      color: #c9b6ff;
-      margin-bottom: 60px;
-      position: relative;
-      z-index: 1;
-    }
+  .process .subtitle {
+  font-size: 1.2rem;
+  color: #c9b6ff;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 1;
+  }
 
-    .process-steps {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      position: relative;
-      z-index: 1;
-    }
+  .process-steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  }
 
-    .step {
-      background: rgba(185, 147, 254, 0.08);
-      border: 1px solid rgba(185, 147, 254, 0.3);
-      border-radius: 20px;
-      padding: 30px;
-      width: 260px;
-      box-shadow: 0 0 20px #7e60fa50;
-      transition: 0.4s;
-    }
+  .step {
+  background: rgba(185, 147, 254, 0.08);
+  border: 1px solid rgba(185, 147, 254, 0.3);
+  border-radius: 20px;
+  padding: 30px;
+  width: 240px;
+  box-shadow: 0 0 20px #7e60fa50;
+  transition: 0.4s;
+  }
 
-    .step:hover {
-      transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 0 35px #b993fe80;
-    }
+  .step:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 35px #b993fe80;
+  }
 
-    .icon {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-    }
+  .icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  }
 
-    .step h3 {
-      color: #b993fe;
-      margin-bottom: 10px;
-    }
+  .step h3 {
+  color: #b993fe;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  }
 
-    .step p {
-      font-size: 0.95rem;
-      color: #ddd;
-    }
+  .step p {
+  font-size: 0.95rem;
+  color: #ddd;
+  }
 
-    .arrow {
-      font-size: 2rem;
-      color: #b993fe80;
-      animation: float 2s ease-in-out infinite;
-    }
+  .arrow {
+  font-size: 2rem;
+  color: #b993fe80;
+  animation: float 2s ease-in-out infinite;
+  }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
+  @keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  }
 
     /* ABOUT */
     .about {
@@ -611,30 +614,44 @@ header.site-header {
 
   <div class="process-steps">
     <div class="step">
-      <div class="icon">📝</div>
-      <h3>1. Подача заявки</h3>
-      <p>Розкажи трішки про себе, щоб ми могли побачити твої цінності та мотивацію.</p>
+      <div class="icon">🔎</div>
+      <h3>1. Слідкуй за оголошеннями</h3>
+      <p>Ми публікуємо їх у Telegram, на сайті або в Instagram.</p>
     </div>
 
     <div class="arrow">➜</div>
 
     <div class="step">
-      <div class="icon">🔎</div>
-      <h3>2. Опрацювання</h3>
-      <p>Наша команда швидко перевіряє твою заявку та шукає найкращий формат участі.</p>
+      <div class="icon">📝</div>
+      <h3>2. Подай заявку</h3>
+      <p>Заповнюєш форму або пишеш нам — залежно від умов набору.</p>
+    </div>
+
+    <div class="arrow">➜</div>
+
+    <div class="step">
+      <div class="icon">📬</div>
+      <h3>3. Очікуй результати</h3>
+      <p>Ми повідомимо, чи проходиш ти далі.</p>
+    </div>
+
+    <div class="arrow">➜</div>
+
+    <div class="step">
+      <div class="icon">🎓</div>
+      <h3>4. Проходь стажування</h3>
+      <p>Коротке навчання, де пояснюємо, як усе працює.</p>
     </div>
 
     <div class="arrow">➜</div>
 
     <div class="step">
       <div class="icon">🌟</div>
-      <h3>3. Підбір активності</h3>
-      <p>Ти приєднуєшся до команди волонтерів — і починаєш освітню місію 🌌</p>
+      <h3>5. Ти в команді</h3>
+      <p>Якщо все добре — ми додаємо тебе в чат репетиторів!</p>
     </div>
   </div>
-</section>
-
-
+</section>  
 
 
 <!-- ABOUT -->
