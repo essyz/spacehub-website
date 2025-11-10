@@ -3,421 +3,759 @@
 <head>
   <meta charset="UTF-8">
   <title>Волонтерство | SpaceHub</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background: #0b0b1d;
-      color: #fff;
-      overflow-x: hidden;
-    }
-header {
-	padding: 0px;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	border-bottom: 2px solid #a48dfc;
-	background: #1a1a1a;
-}
-
-.site-header {
-	background: #1b1b2f;
-	padding: 0px;
-	display: flex;
-	justify-content: center;
-	position: relative;
-	z-index: 2;
-}
-
-.header-inner {
-	width: 100%;
-	max-width: 1200px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.logo img {
-	padding: 0px;
-	height: 100px;
-	display: block;
-
-}
-
-.btn-insta {
-	background: #b993fe;
-	color: #fff;
-	padding: 10px 20px;
-	border-radius: 30px;
-	text-decoration: none;
-	transition: background 0.3s;
-}
-
-.btn-insta:hover {
-	background: #a17bd9;
-}
-
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  gap: 6px;
-  z-index: 1001;
-}
-
-.hamburger span {
-  width: 30px;
-  height: 3px;
-  background: #fff;
-  border-radius: 3px;
-  transition: 0.3s;
-}
-
-/* Анімація хрестика */
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 6px);
-}
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
-
-/* Меню */
-.nav-menu {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-/* Посилання в меню */
-.nav-menu a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-.nav-menu a:hover {
-  color: #b993fe;
-}
-
-/* 📱 Для мобільних */
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex;
+/* ==========================================================
+   GLOBAL / RESET
+   - базові налаштування, кольори, шрифт
+   ========================================================== */
+  :root{
+    --bg: #0b0b1d;
+    --panel: #1b1b2f;
+    --accent: #b993fe;
+    --accent-2: #7e60fa;
+    --glass-border: rgba(26,26,26,0.9);
+  }
+  *{box-sizing:border-box}
+  html,body {height:100%}
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: var(--bg);
+    color: #fff;
+    overflow-x: hidden;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
   }
 
-  .nav-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    height: 100vh;
-    width: 250px;
-    background: #1b1b2f;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    transition: right 0.4s ease;
-    z-index: 1000;
-  }
-
-  .nav-menu.active {
-    right: 0;
-  }
+/* ==========================================================
+   HEADER (fixed)
+   - header wrapper, inner container, logo, nav, buttons
+   ========================================================== */
+header.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px; /* збережено як в оригіналі */
+  background: rgba(26, 26, 26, 0.9);
+  backdrop-filter: blur(8px);
+  border-bottom: 2px solid #a48dfc;
+  z-index: 2000;
 }
 
-    /* HERO */
-    .hero {
-      height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: radial-gradient(circle at 20% 20%, #3c1e70, #0b0b1d);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #b993fe, #7e60fa);
-  background-clip: text;              
-  -webkit-background-clip: text;      
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 20px;
+/* внутрішній контейнер хедера */
+.header-inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 0 20px;
+}
+
+/* логотип */
+.logo img{
+  height:60px; /* десктоп */
+  display:block;
+}
+
+/* навігація (посилання) */
+.nav-menu{
+  display:flex;
+  gap:20px;
+  align-items:center;
+}
+/* посилання меню */
+.nav-menu a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  transition:color .25s;
+}
+.nav-menu a:hover{ color: var(--accent) }
+
+/* спеціальна кнопка Instagram у хедері */
+.btn-insta{
+  background: var(--accent);
+  color:#fff;
+  padding:10px 20px;
+  border-radius:30px;
+  text-decoration:none;
+  transition: background .25s;
+}
+.btn-insta:hover{ background:#a17bd9 }
+
+/* гамбургер (прихований на десктопі) */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:6px;
+  cursor:pointer;
+  z-index:1001;
+}
+.hamburger span{
+  width:30px;
+  height:3px;
+  background:#fff;
+  border-radius:3px;
+  transition: .3s;
+}
+/* анімація хрестика */
+.hamburger.active span:nth-child(1){ transform: rotate(45deg) translate(5px,6px) }
+.hamburger.active span:nth-child(2){ opacity:0 }
+.hamburger.active span:nth-child(3){ transform: rotate(-45deg) translate(6px,-6px) }
+
+/* ==========================================================
+   FLOATING TELEGRAM BUTTON
+   - десктоп: збережено початкову позицію (як в оригіналі),
+   - мобільна поведінка буде переоприділена в media query
+   ========================================================== */
+.floating-buttons{
+  position: fixed;
+  right: 25px;
+  bottom: -600px; /* залишив як у твоєму оригіналі (не чіпаю для ноутбука) */
+  z-index: 1999;
+}
+.floating-buttons a{
+  background: var(--accent);
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  padding:10px;
+  border-radius:50%;
+  box-shadow: 0 0 18px rgba(185,147,254,0.6);
+  transition: all .3s ease;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.5rem;
+  width:56px;
+  height:56px;
+  animation: pulse 2.5s infinite ease-in-out;
+}
+.floating-buttons a:hover{
+  background:#a17bd9;
+  transform:scale(1.1);
+  box-shadow:0 0 25px rgba(185,147,254,0.9);
+}
+@keyframes pulse{
+  0%{ transform:scale(1); box-shadow:0 0 12px rgba(185,147,254,0.5) }
+  50%{ transform:scale(1.1); box-shadow:0 0 25px rgba(185,147,254,0.8) }
+  100%{ transform:scale(1); box-shadow:0 0 12px rgba(185,147,254,0.5) }
+}
+
+/* ==========================================================
+   HERO
+   ========================================================== */
+.hero{
+  margin-top:70px; /* щоб не ховалося під фіксованим header */
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  background: url("img/HeaderBackgroundVolonteers.png") no-repeat center center/cover;
+  position:relative;
+  overflow:hidden;
+}
+.hero h1{
+  font-size:3.5rem;
+  font-weight:700;
+  background: linear-gradient(90deg,#FFFFFF,#FFE9A9);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin:0 0 20px 0;
   animation: fadeInDown 1s ease-in-out;
 }
-    .hero p {
-      max-width: 700px;
-      font-size: 1.3rem;
-      margin-bottom: 30px;
-      color: #ddd;
-      animation: fadeInUp 1.2s ease-in-out;
-    }
-    .hero .btn {
-      display: inline-block;
-      margin: 10px;
-      padding: 15px 30px;
-      border-radius: 30px;
-      background: #b993fe;
-      color: #fff;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.3s;
-      box-shadow: 0 0 20px #b993fe80;
-    }
-    .hero .btn:hover {
-      background: #a17bd9;
-      transform: scale(1.08);
-    }
-
-    /* ABOUT */
-    .about {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 40px;
-      padding: 100px 10%;
-    }
-    .about img {
-      flex: 1 1 40%;
-      border-radius: 20px;
-      box-shadow: 0 0 30px #7e60fa60;
-    }
-    .about-text {
-      flex: 1 1 50%;
-    }
-    .about-text h2 {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-      color: #b993fe;
-    }
-    .about-text p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: #ccc;
-    }
-
-    /* CARDS */
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 25px;
-      padding: 80px 10%;
-    }
-    .card {
-      background: #1b1b2f;
-      border-radius: 20px;
-      padding: 40px 20px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-      box-shadow: 0 0 15px #000;
-    }
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 30px #b993fe80;
-    }
-    .card i {
-      font-size: 40px;
-      margin-bottom: 15px;
-      color: #b993fe;
-    }
-    .card h3 {
-      font-size: 1.3rem;
-    }
-
-    /* STATS */
-    .stats {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-      padding: 80px 10%;
-      background: linear-gradient(135deg, #1b1b2f, #0f0f1d);
-    }
-    .stat {
-      flex: 1 1 250px;
-      text-align: center;
-      padding: 40px 20px;
-      border-radius: 20px;
-      background: #13132b;
-      box-shadow: 0 0 25px #7e60fa60;
-      transition: transform 0.3s;
-    }
-    .stat:hover {
-      transform: scale(1.05);
-    }
-    .stat h3 {
-      font-size: 3rem;
-      color: #b993fe;
-    }
-    .stat p {
-      margin-top: 10px;
-      font-size: 1.1rem;
-      color: #ccc;
-    }
-
-    /* MOTIVATION */
-    .motivation {
-      text-align: center;
-      padding: 120px 20px;
-    }
-    .motivation h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  background: linear-gradient(90deg, #ff7eb3, #b993fe);
-  background-clip: text;              
-  -webkit-background-clip: text;      /* для Webkit-браузеров */
-  -webkit-text-fill-color: transparent;
+.hero p{
+  font-size:1.15rem;
+  color:#f5f5f5;
+  max-width:900px;
+  margin:0 0 30px 0;
 }
-    .motivation p {
-      font-size: 1.2rem;
-      max-width: 800px;
-      margin: auto;
-      color: #ddd;
-    }
+.hero-buttons{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.hero .btn{
+  display:inline-block;
+  margin:10px 0;
+  padding:15px 30px;
+  border-radius:30px;
+  background:var(--accent);
+  color:#fff;
+  font-weight:bold;
+  text-decoration:none;
+  transition: all .3s ease;
+  box-shadow:0 0 20px #b993fe80;
+}
+.hero .btn:hover{
+  background:#a17bd9;
+  transform:scale(1.08);
+}
 
-    /* JOIN */
-    .join {
-      text-align: center;
-      padding: 100px 20px;
-      background: #1b1b2f;
-    }
-    .join h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #b993fe;
-    }
-    .join a {
-      margin: 10px;
-      display: inline-block;
-      padding: 15px 30px;
-      border-radius: 30px;
-      background: #b993fe;
-      text-decoration: none;
-      color: #fff;
-      font-weight: bold;
-      transition: 0.3s;
-      box-shadow: 0 0 15px #7e60fa80;
-    }
-    .join a:hover {
-      transform: scale(1.08);
-      background: #a17bd9;
-    }
+/* ==========================================================
+   PROCESS SECTION
+   ========================================================== */
+.process{
+  background: radial-gradient(circle at top,#b993fe20 0%, #7e60fa10 100%);
+  color:#fff;
+  padding:100px 40px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.process::before{
+  content:"";
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background: radial-gradient(circle,#b993fe20, transparent 60%);
+  animation: bgPulse 6s infinite alternate;
+  z-index:0;
+}
+@keyframes bgPulse{
+  0%{ transform:scale(1); opacity:.6 }
+  100%{ transform:scale(1.2); opacity:.3 }
+}
+.process h2{
+  font-size:3rem;
+  background:linear-gradient(90deg,#b993fe,#7e60fa);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:10px;
+  position:relative;
+  z-index:1;
+}
+.process .subtitle{
+  font-size:1.2rem;
+  color:#c9b6ff;
+  margin-bottom:60px;
+  z-index:1;
+}
+.process-steps{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:25px;
+  position:relative;
+  z-index:1;
+  max-width:1200px;
+  margin:0 auto;
+}
+.step{
+  background: rgba(185,147,254,0.08);
+  border:1px solid rgba(185,147,254,0.3);
+  border-radius:20px;
+  padding:30px;
+  width:240px;
+  box-shadow:0 0 20px #7e60fa50;
+  transition: transform .4s, box-shadow .4s;
+}
+.step:hover{
+  transform: translateY(-10px) scale(1.05);
+  box-shadow:0 0 35px #b993fe80;
+}
+.icon{ font-size:2.5rem; margin-bottom:15px }
+.step h3{ color:var(--accent); margin-bottom:10px; font-size:1.1rem }
+.step p{ font-size:.95rem; color:#ddd }
 
-    /* Animations */
-    @keyframes fadeInDown {from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes fadeInUp {from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+/* arrow animation */
+.arrow{ font-size:2rem; color:#b993fe80; animation:float 2s ease-in-out infinite }
+@keyframes float{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+
+/* ==========================================================
+   ABOUT
+   ========================================================== */
+.about{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:40px;
+  padding:100px 10%;
+}
+.about img{
+  flex:1 1 40%;
+  border-radius:20px;
+  box-shadow:0 0 30px #7e60fa60;
+  max-width:100%;
+}
+.about-text{ flex:1 1 50% }
+.about-text h2{ font-size:2.2rem; margin-bottom:20px; color:var(--accent) }
+.about-text p{ font-size:1.1rem; line-height:1.7; color:#ccc }
+
+/* ==========================================================
+   REQUIREMENTS
+   ========================================================== */
+.requirements{
+  background: linear-gradient(135deg,#2a155d 0%, #3d1b80 40%, #4b1f8f 100%);
+  color:#fff;
+  padding:100px 10%;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.requirements::before{
+  content:"";
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  width:200%;
+  height:200%;
+  background: radial-gradient(circle,#b993fe30 0%, transparent 70%);
+  animation: glowMove 8s ease-in-out infinite alternate;
+  z-index:0;
+}
+@keyframes glowMove{ 0%{transform:translate(0,0) scale(1)} 100%{transform:translate(20px,40px) scale(1.2)} }
+.requirements-header{ margin-bottom:70px; position:relative; z-index:1 }
+.requirements-header h2{
+  font-size:2.8rem;
+  font-weight:700;
+  background:linear-gradient(90deg,#b993fe, white);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:15px;
+  letter-spacing:1px;
+}
+.requirements-header p{ color:#d4c7ff; font-size:1.1rem; max-width:600px; margin:0 auto }
+
+/* cards grid */
+.cards{
+  display:grid;
+  grid-template-columns: repeat(4,1fr);
+  gap:25px;
+  position:relative;
+  z-index:1;
+}
+.card{
+  background: rgba(255,255,255,0.06);
+  border:1px solid rgba(185,147,254,0.2);
+  border-radius:20px;
+  padding:40px 25px;
+  text-align:center;
+  transition: transform .3s, box-shadow .3s, border .3s;
+  box-shadow:0 0 20px rgba(185,147,254,0.15);
+}
+.card:hover{
+  transform: translateY(-10px) scale(1.05);
+  box-shadow:0 0 40px rgba(185,147,254,0.4);
+  border:1px solid rgba(185,147,254,0.5);
+}
+.icon-wrapper{
+  width:70px;
+  height:70px;
+  margin:0 auto 15px auto;
+  border-radius:50%;
+  background: radial-gradient(circle,#b993fe40 0%, transparent 70%);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 0 25px rgba(185,147,254,0.3);
+  transition: transform .4s;
+}
+.card:hover .icon-wrapper{ transform: rotate(10deg) scale(1.1) }
+.card i{ font-size:36px; color:var(--accent) }
+.card h3{ font-size:1.2rem; color:#f5f0ff }
+
+/* ==========================================================
+   MOTIVATION
+   ========================================================== */
+.motivation{
+  text-align:center;
+  padding:120px 20px;
+  background: radial-gradient(circle at top,#b993fe20 0%, #7e60fa10 100%);
+}
+.motivation h2{
+  font-size:2.5rem;
+  margin-bottom:20px;
+  background: linear-gradient(90deg,#b756ef,#f773ec);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.motivation p{ font-size:1.2rem; max-width:800px; margin:auto; color:#f5f1f1 }
+
+/* ==========================================================
+   JOIN
+   ========================================================== */
+.join{ text-align:center; padding:100px 20px }
+.join h2{ font-size:2rem; margin-bottom:20px; color:var(--accent) }
+.join a{
+  margin:10px;
+  display:inline-block;
+  padding:15px 30px;
+  border-radius:30px;
+  background:var(--accent);
+  text-decoration:none;
+  color:#fff;
+  font-weight:bold;
+  transition: .3s;
+  box-shadow:0 0 15px #7e60fa80;
+}
+.join a:hover{ transform:scale(1.08); background:#a17bd9 }
+
+/* ==========================================================
+   ANIMATIONS
+   ========================================================== */
+@keyframes fadeInDown{ from{opacity:0;transform:translateY(-30px)} to{opacity:1;transform:translateY(0)} }
+
+/* ==========================================================
+   RESPONSIVE: TABLETS & PHONES
+   - Зміни шрифтів у хедері/hero і кнопок тільки для телефонів
+   - Телеграм-кнопка для мобільних: трохи вище низу (60px)
+   ========================================================== */
+
+/* --- 🔧 ФІКС ПУЛЬСУЮЧОЇ TELEGRAM-КНОПКИ НА НОУТБУКАХ --- */
+@media (min-width: 769px) {
+  .floating-buttons {
+    position: fixed;
+    right: 25px;
+    bottom: 40px; /* трохи вище нижнього краю */
+    z-index: 3000; /* поверх усього */
+    display: flex !important;
+  }
+  .floating-buttons a {
+    background: #b993fe;
+    color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 18px rgba(185, 147, 254, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    width: 56px;
+    height: 56px;
+    animation: pulse 2.5s infinite ease-in-out;
+    transition: all 0.3s ease;
+  }
+  .floating-buttons a:hover {
+    background: #a17bd9;
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(185, 147, 254, 0.9);
+  }
+}
+
+
+/* планшети до 1024px (збережено адаптивну сітку для cards тощо) */
+@media (max-width:1024px){
+  .hero h1{ font-size:3rem }
+  .hero p{ font-size:1.25rem; max-width:700px }
+  .hero .btn{ font-size:1.1rem; padding:16px 35px; border-radius:35px }
+  .cards{ grid-template-columns: repeat(2,1fr) }
+  .about{ padding:80px 5% }
+  .about img{ flex:1 1 45% }
+  .about-text{ flex:1 1 45% }
+}
+
+/* телефони до 768px */
+@media (max-width:768px){
+  /* header: гамбургер активний */
+  .hamburger{ display:flex }
+  .nav-menu{
+    position:fixed;
+    top:0;
+    right:-100%;
+    height:100vh;
+    width:250px;
+    background:var(--panel);
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:30px;
+    transition:right .4s ease;
+    z-index:1000;
+  }
+  .nav-menu.active{ right:0 }
+
+  header.site-header{ height:65px }
+  .logo img{ height:55px } 
+
+  /* HERO: збільшений заголовок та кнопки - тільки для телефонів */
+  .hero{ height:auto; padding:60px 20px; background-position:center }
+  .hero h1{ font-size:2.6rem; line-height:1.3; margin-bottom:20px } /* ЗРОСТАННЯ заголовку ТІЛЬКИ на телефонах */
+  .hero p{ font-size:1.3rem; line-height:1.6; max-width:90%; margin:0 auto 30px }
+  .hero .btn{
+    width:90%;
+    max-width:350px;
+    padding:18px 30px;
+    font-size:1.2rem;  /* ЗРОСТАННЯ тексту в кнопках ТІЛЬКИ на телефонах */
+    border-radius:40px;
+    background: linear-gradient(90deg,#b993fe,#7e60fa);
+    box-shadow: 0 0 20px rgba(185,147,254,0.6);
+  }
+  .hero .btn:hover{
+    background: linear-gradient(90deg,#a17bd9,#8a5ef2);
+    transform:scale(1.05);
+    box-shadow:0 0 28px rgba(185,147,254,0.8);
+  }
+
+  /* ABOUT адаптація */
+  .about{ flex-direction:column; text-align:center; padding:60px 20px }
+  .about img{ width:100% }
+  .about-text h2{ font-size:1.8rem }
+  .about-text p{ font-size:1rem }
+
+  /* PROCESS адаптація */
+  .process{ padding:60px 20px }
+  .process h2{ font-size:2rem }
+  .process-steps{ flex-direction:column; gap:30px }
+  .arrow{ display:none }
+
+  /* REQUIREMENTS адаптація */
+  .requirements{ padding:70px 20px }
+  .requirements-header h2{ font-size:2rem }
+  .cards{ grid-template-columns: 1fr }
+  .card{ padding:30px 20px }
+
+  /* MOTIVATION & JOIN */
+  .motivation, .join{ padding:60px 20px }
+  .motivation h2, .join h2{ font-size:1.8rem }
+  .motivation p{ font-size:1rem }
+
+  /* Плаваюча кнопка: на телефонах вона трохи вище низу (твоє побажання) */
+  .floating-buttons{
+    right:15px;
+    bottom:60px; /* трохи вище найнижчої межі */
+  }
+  .floating-buttons a{
+    width:50px;
+    height:50px;
+    font-size:1.3rem;
+  }
+}
+
+/* дуже малі екрани до 480px (тонке налаштування) */
+@media (max-width:480px){
+  .hero h1{ font-size:2rem; line-height:1.2 }
+  .hero p{ font-size:1.2rem; line-height:1.5 }
+  .hero .btn{ padding:16px 25px; font-size:1rem }
+  .about-text h2, .requirements-header h2, .motivation h2, .join h2{ font-size:1.6rem }
+  .card h3{ font-size:1rem }
+}
+
+/* дрібні візуальні поліпшення (пріоритети) */
+@media (prefers-reduced-motion: reduce){
+  .floating-buttons a, .step, .card { animation: none !important; transition: none !important; }
+}
+
   </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="site-header">
-  <div class="header-inner">
-    <div class="logo">
-      <img src="./img/logo-removebg-preview (3).png" alt="SpaceHub Logo">
+  <!-- ===========================
+       HEADER
+       =========================== -->
+  <header class="site-header" aria-label="Головна навігація">
+    <div class="header-inner">
+      <div class="logo">
+        <img src="./img/logo-removebg-preview (3).png" alt="SpaceHub Logo">
+      </div>
+
+      <!-- гамбургер (для мобільних) -->
+      <div class="hamburger" id="hamburger" aria-label="Відкрити меню" aria-expanded="false" role="button" tabindex="0">
+        <span></span><span></span><span></span>
+      </div>
+
+      <!-- Навігаційне меню -->
+      <!-- Важливо: є id="nav-menu" щоб JS коректно його знаходив -->
+      <nav class="nav-menu" id="nav-menu" aria-label="Головне меню">
+        <a href="index.html">Головна</a>
+        <a href="about.html">Про нас</a>
+        <a href="projects.html">Напрямки</a>
+        <a href="volunteers.html">Волонтерство</a>
+        <a href="team.html" class="active">Команда</a>
+        <a href="contacts.html">Контакти</a>
+        <a class="btn-insta" href="https://www.instagram.com/_space.hub/" target="_blank" rel="noopener">Instagram</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===========================
+       FLOATING TELEGRAM BUTTON
+       - DESKTOP: позиція збережена як у оригіналі
+       - MOBILE: переоприділена в media queries (bottom:60px)
+       =========================== -->
+  <div class="floating-buttons" aria-hidden="false">
+    <a href="https://t.me/SpaceHub_manager" target="_blank" rel="noopener" title="Написати менеджеру">
+      <i class="fa-brands fa-telegram"></i>
+    </a>
+  </div>
+
+  <!-- ===========================
+       HERO
+       =========================== -->
+  <section class="hero" aria-label="Герой секція">
+    <h1>Стань репетитором-волонтером</h1>
+    <p>Долучись до SpaceHub і допоможи іншим учням досягати більше. Твої знання можуть стати новою зіркою на освітньому небі 🚀</p>
+
+    <div class="hero-buttons">
+      <a href="https://linktr.ee/SpaceHub_" class="btn" target="_blank" rel="noopener">Подати заявку</a>
+      <a href="https://t.me/SpaceHub_manager" class="btn" target="_blank" rel="noopener">
+        <i class="fa-brands fa-telegram" aria-hidden="true"></i> Написати менеджеру
+      </a>
+    </div>
+  </section>
+
+  <!-- ===========================
+       PROCESS
+       =========================== -->
+  <section class="process" aria-label="Процес реєстрації">
+    <h2>🚀 Процес реєстрації</h2>
+    <p class="subtitle">Твоя дорога до волонтерства починається тут</p>
+
+    <div class="process-steps" role="list">
+      <div class="step" role="listitem">
+        <div class="icon">🔎</div>
+        <h3>1. Слідкуй за оголошеннями</h3>
+        <p>Ми публікуємо їх у Telegram, на сайті або в Instagram.</p>
+      </div>
+
+      <div class="arrow">➜</div>
+
+      <div class="step" role="listitem">
+        <div class="icon">📝</div>
+        <h3>2. Подай заявку</h3>
+        <p>Заповнюєш форму або пишеш нам — залежно від умов набору.</p>
+      </div>
+
+      <div class="arrow">➜</div>
+
+      <div class="step" role="listitem">
+        <div class="icon">📬</div>
+        <h3>3. Очікуй результати</h3>
+        <p>Ми повідомимо, чи проходиш ти далі.</p>
+      </div>
+
+      <div class="arrow">➜</div>
+
+      <div class="step" role="listitem">
+        <div class="icon">🎓</div>
+        <h3>4. Проходь стажування</h3>
+        <p>Коротке навчання, де пояснюємо, як усе працює.</p>
+      </div>
+
+      <div class="arrow">➜</div>
+
+      <div class="step" role="listitem">
+        <div class="icon">🌟</div>
+        <h3>5. Ти в команді</h3>
+        <p>Якщо все добре — ми додаємо тебе в чат репетиторів!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       ABOUT
+       =========================== -->
+  <section class="about" aria-label="Про волонтерів">
+    <img src="./img/volunteers.jpg" alt="Volunteers">
+    <div class="about-text">
+      <h2>Хто такі репетитори-волонтери?</h2>
+      <p>
+        Волонтерство в SpaceHub — це не лише можливість поділитися знаннями, а й шанс змінити життя інших. Наші волонтери допомагають учням з різних куточків України здобувати освіту, яка відкриває нові горизонти. Це внесок у розвиток освітньої спільноти, що базується на підтримці, довірі та натхненні. Разом ми формуємо середовище, де кожен має шанс на якісне навчання. Раптом маєш свої ідеї які хочеш втілити або вже розвиваєш й бажаєш розповісти про твою діяльність на сторінці організації.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===========================
+       REQUIREMENTS
+       =========================== -->
+  <section class="requirements" aria-label="Вимоги до волонтерів">
+    <div class="requirements-header">
+      <h2>✨ Вимоги до волонтерів</h2>
+      <p>Щоб приєднатися, тобі потрібно лише бажання допомагати та рости разом з іншими. Ми шукаємо людей, які:</p>
     </div>
 
-    <!-- Гамбургер -->
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="cards" aria-hidden="false">
+      <div class="card">
+        <div class="icon-wrapper"><i class="fa-solid fa-user-graduate"></i></div>
+        <h3>Віком від 14 років</h3>
+      </div>
+
+      <div class="card">
+        <div class="icon-wrapper"><i class="fa-solid fa-book"></i></div>
+        <h3>Добре знають шкільні предмети</h3>
+      </div>
+
+      <div class="card">
+        <div class="icon-wrapper"><i class="fa-solid fa-users"></i></div>
+        <h3>Злагоджено працюють у команді</h3>
+      </div>
+
+      <div class="card">
+        <div class="icon-wrapper"><i class="fa-solid fa-heart"></i></div>
+        <h3>Бажають допомагати</h3>
+      </div>
     </div>
+  </section>
 
-    <!-- Меню -->
-    <nav class="nav-menu">
-      <a href="index.html">Головна</a>
-      <a href="about.html">Про нас</a>
-      <a href="projects.html">Проєкти</a>
-      <a href="volunteers.html">Волонтерство</a>
-      <a href="team.html" class="active">Команда</a>
-      <a href="contacts.html">Контакти</a>
-      <a class="btn btn-insta" href="https://www.instagram.com/_space.hub/" target="_blank">Instagram</a>
-    </nav>
-  </div>
-</header>
+  <!-- ===========================
+       MOTIVATION
+       =========================== -->
+  <section class="motivation" aria-label="Мотивуюча секція">
+    <h2>Твої знання можуть змінити життя інших</h2>
+    <p>Приєднуючись до SpaceHub, ти стаєш частиною інноваційної команди, яка робить освіту доступною. Це можливість не лише навчати, а й вчитися новому самому — від технологій до лідерства.</p>
+  </section>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>Стань репетитором-волонтером</h1>
-  <p>Долучись до SpaceHub і допоможи іншим учням досягати більше. Твої знання можуть стати новою зіркою на освітньому небі 🚀</p>
-  <a href="https://linktr.ee/SpaceHub_" class="btn">Подати заявку</a>
-  <a href="https://t.me/SpaceHub_manager" class="btn"><i class="fa-brands fa-telegram"></i> Написати менеджеру</a>
-</section>
+  <!-- ===========================
+       JOIN
+       =========================== -->
+  <section class="join" aria-label="Приєднатися">
+    <h2>Приєднуйся до нас 🌟</h2>
+    <a href="https://linktr.ee/SpaceHub_" target="_blank" rel="noopener">Заповнити форму</a>
+    <a href="https://t.me/SpaceHub_manager" target="_blank" rel="noopener"><i class="fa-brands fa-telegram" aria-hidden="true"></i> Написати менеджеру</a>
+  </section>
 
-<!-- ABOUT -->
-<section class="about">
-  <img src="./img/volunteers.jpg" alt="Volunteers">
-  <div class="about-text">
-    <h2>Хто такі репетитори-волонтери?</h2>
-    <p>Ми — молодь, яка безкоштовно допомагає учням у навчанні. Тут ти можеш розкрити свій потенціал, знайти однодумців та зробити реальні зміни для тих, хто цього найбільше потребує.</p>
-    <p>Це не просто підтримка у шкільних предметах — це шанс навчитися працювати в команді, покращити свої комунікаційні навички та здобути досвід, який стане у нагоді в майбутньому.</p>
-  </div>
-</section>
+  <!-- ===========================
+       SCRIPTS
+       - гамбургер
+       - анімація цифр (як була у тебе — залишив, без помилок)
+       =========================== -->
+  <script>
+    /* --- гамбургер: коректно знаходить елементи за id --- */
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
 
-<!-- CARDS -->
-<section class="cards">
-  <div class="card"><i class="fa-solid fa-user-graduate"></i><h3>Вік від 14 років</h3></div>
-  <div class="card"><i class="fa-solid fa-book"></i><h3>Знання шкільних предметів</h3></div>
-  <div class="card"><i class="fa-solid fa-users"></i><h3>Командна робота</h3></div>
-  <div class="card"><i class="fa-solid fa-heart"></i><h3>Бажання допомагати</h3></div>
-</section>
+    hamburger.addEventListener('click', () => {
+      const expanded = hamburger.classList.toggle('active');
+      navMenu.classList.toggle('active');
+      // оновлюємо aria-expanded для доступності
+      hamburger.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    });
 
-<!-- STATS -->
-<section class="stats">
-  <div class="stat"><h3 data-count="65">0</h3><p>Учнів отримали підтримку</p></div>
-  <div class="stat"><h3 data-count="970">0</h3><p>Годин волонтерства</p></div>
-  <div class="stat"><h3 data-count="300">0</h3><p>Учасників курсів</p></div>
-</section>
-
-<!-- MOTIVATION -->
-<section class="motivation">
-  <h2>Твої знання можуть змінити життя інших</h2>
-  <p>Приєднуючись до SpaceHub, ти стаєш частиною інноваційної команди, яка робить освіту доступною.  
-     Це можливість не лише навчати, а й вчитися новому самому — від технологій до лідерства.</p>
-</section>
-
-<!-- JOIN -->
-<section class="join">
-  <h2>Приєднуйся до нас 🌟</h2>
-  <a href="https://linktr.ee/SpaceHub_">Заповнити форму</a>
-  <a href="https://t.me/SpaceHub_manager"><i class="fa-brands fa-telegram"></i> Написати менеджеру</a>
-</section>
-
-<script>
-  // гамбургер
-  const hamburger = document.getElementById("hamburger");
-  const navMenu = document.getElementById("nav-menu");
-  hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
-  });
-
-  // анімація цифр
-  const counters = document.querySelectorAll('.stat h3');
-  counters.forEach(counter => {
-    let target = +counter.dataset.count;
-    let count = 0;
-    let step = target / 80;
-    function updateCounter() {
-      count += step;
-      if(count < target){
-        counter.textContent = Math.floor(count);
-        requestAnimationFrame(updateCounter);
-      } else {
-        counter.textContent = target + "+";
-      }
+    /* --- анімація цифр (як в оригіналі; якщо немає .stat — код мовчить) --- */
+    try {
+      const counters = document.querySelectorAll('.stat h3');
+      counters.forEach(counter => {
+        let target = +counter.dataset.count;
+        if (!target) return;
+        let count = 0;
+        let step = target / 80;
+        function updateCounter() {
+          count += step;
+          if (count < target) {
+            counter.textContent = Math.floor(count);
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.textContent = target + "+";
+          }
+        }
+        updateCounter();
+      });
+    } catch(e){
+      // якщо щось — мовчимо (щоб не ламати сторінку)
+      console.warn('counter animation skipped', e);
     }
-    updateCounter();
-  });
-</script>
-
+  </script>
 </body>
 </html>
