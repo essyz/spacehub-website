@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Напрямки | SpaceHub</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+  --bg:#0b0b1d;
+  --panel:#1b1b2f;
+  --accent:#b993fe;
+  --accent-2:#7e60fa;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Poppins,sans-serif;
+  background:var(--bg);
+  color:#fff;
+}
+
+/* ===== HEADER  ===== */
+
+.floating-buttons{
+  position: fixed;
+  right: 25px;
+  bottom: 40px; 
+  z-index: 3000;
+}
+.floating-buttons a{
+  background: var(--accent);
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  padding:10px;
+  border-radius:50%;
+  box-shadow: 0 0 18px rgba(185,147,254,0.6);
+  transition: all .3s ease;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.5rem;
+  width:56px;
+  height:56px;
+  animation: pulse 2.5s infinite ease-in-out;
+}
+.floating-buttons a:hover{
+  background:#a17bd9;
+  transform:scale(1.1);
+  box-shadow:0 0 25px rgba(185,147,254,0.9);
+}
+@keyframes pulse{
+  0%{ transform:scale(1); box-shadow:0 0 12px rgba(185,147,254,0.5) }
+  50%{ transform:scale(1.1); box-shadow:0 0 25px rgba(185,147,254,0.8) }
+  100%{ transform:scale(1); box-shadow:0 0 12px rgba(185,147,254,0.5) }
+}
+
+/* ===== HERO (фіолетовий оригінальний фон) ===== */
+.hero{
+  margin-top:70px;
+  min-height:95vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px 20px;
+  background:
+    radial-gradient(circle at top,#b993fe55 0%,transparent 55%),
+    radial-gradient(circle at bottom right,#7e60fa55 0%,transparent 50%),
+    linear-gradient(135deg,#120a2a,#0b0b1d 60%);
+}
+.hero h1{
+  font-size:3.6rem;
+  font-weight:700;
+  background:linear-gradient(90deg,#fff,#d6c7ff);
+  -webkit-background-clip:text;
+  color:transparent;
+  margin-bottom:20px;
+}
+.hero p{
+  max-width:900px;
+  font-size:1.2rem;
+  color:#eee;
+}
+.hero .btn{
+  margin-top:35px;
+  padding:16px 38px;
+  border-radius:35px;
+  background:linear-gradient(90deg,#b993fe,#7e60fa);
+  color:#fff;
+  text-decoration:none;
+  font-weight:bold;
+  box-shadow:0 0 25px rgba(185,147,254,.8);
+}
+
+/* ===== FEATURE INTRO (заміна нудного блоку) ===== */
+.feature-intro{
+  padding:110px 10%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+.feature-box{
+  background:rgba(185,147,254,.08);
+  border:1px solid rgba(185,147,254,.35);
+  border-radius:30px;
+  padding:50px;
+  box-shadow:0 0 40px rgba(126,96,250,.35);
+}
+.feature-box h2{
+  font-size:2.4rem;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.feature-box p{
+  font-size:1.15rem;
+  line-height:1.7;
+  color:#ddd;
+}
+
+/* ===== SUBJECTS (симетрія + детальні іконки) ===== */
+.subjects{
+      background:linear-gradient(135deg,#2a155d,#4b1f8f);
+  padding:110px 10%;
+  text-align:center;
+}
+.subjects h2{font-size:2.6rem;color:var(--accent)}
+.subject-grid{
+  margin-top:60px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:40px;
+}
+.subject{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(185,147,254,.35);
+  border-radius:25px;
+  padding:45px 30px;
+  transition:.35s;
+}
+.subject:hover{
+  transform:translateY(-12px) scale(1.05);
+  box-shadow:0 0 35px rgba(185,147,254,.7);
+}
+.subject i{
+  font-size:3.2rem;
+  margin-bottom:20px;
+  color:var(--accent);
+}
+.subject h3{font-size:1.2rem}
+
+/* ===== PROCESS ===== */
+.process{
+  padding:120px 10%;
+  text-align:center;
+  background:radial-gradient(circle,#b993fe22,#0000);
+}
+.process h2{
+  font-size:2.8rem;
+  background:linear-gradient(90deg,#b993fe,#7e60fa);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.process-steps{
+  margin-top:70px;
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
+}
+.step{
+  width:240px;
+  padding:35px;
+  background:rgba(185,147,254,.08);
+  border-radius:22px;
+  border:1px solid rgba(185,147,254,.35);
+}
+.step .icon{font-size:2.4rem;margin-bottom:15px}
+
+/* ===== CATALOG CAROUSEL ===== */
+.catalog{
+  padding:120px 6%;
+  background:linear-gradient(135deg,#2a155d,#4b1f8f);
+}
+.catalog h2{text-align:center;font-size:2.8rem;margin-bottom:60px}
+.carousel{
+  display:flex;
+  gap:30px;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  padding-bottom:20px;
+}
+.carousel::-webkit-scrollbar{display:none}
+.card{
+  min-width:320px;
+  background:rgba(255,255,255,.06);
+  border-radius:22px;
+  overflow:hidden;
+  border:1px solid rgba(185,147,254,.4);
+}
+.card img{width:100%;height:180px;object-fit:cover}
+.card-body{padding:25px}
+.status{
+  display:inline-block;
+  padding:6px 14px;
+  border-radius:20px;
+  font-size:.85rem;
+  margin-bottom:10px;
+}
+.active{background:#2ecc71}
+.finished{background:#e67e22}
+
+@media(max-width:900px){
+  .feature-intro{grid-template-columns:1fr}
+  .subject-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+  .subject-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="floating-buttons">
+  <a href="https://t.me/SpaceHub_manager"><i class="fa-brands fa-telegram"></i></a>
+</div>
+
+<section class="hero">
+  <h1>Напрямки SpaceHub</h1>
+  <p>Освітні ініціативи, що відкривають доступ до знань, мов та розвитку незалежно від віку й локації.</p>
+  <a class="btn" href="https://linktr.ee/SpaceHub_">Стати учнем</a>
+</section>
+
+<section class="feature-intro">
+  <div class="feature-box">
+    <h2>Навчання без барʼєрів</h2>
+    <p>SpaceHub — це не просто уроки. Це середовище підтримки, де учні отримують доступ до знань, менторства та впевненості у власних силах.</p>
+  </div>
+  <div class="feature-box">
+    <h2>Онлайн. Безкоштовно. Якісно.</h2>
+    <p>Ми поєднуємо волонтерів і учнів у сучасному онлайн-форматі, фокусуючись на практиці, регулярності та результаті.</p>
+  </div>
+</section>
+
+<section class="subjects">
+  <h2>Предмети</h2>
+  <div class="subject-grid">
+    <div class="subject"><i class="fa-solid fa-language"></i><h3>Англійська мова</h3></div>
+    <div class="subject"><i class="fa-solid fa-flag"></i><h3>Італійська мова</h3></div>
+    <div class="subject"><i class="fa-solid fa-earth-europe"></i><h3>Іспанська мова</h3></div>
+    <div class="subject"><i class="fa-solid fa-square-root-variable"></i><h3>Математика</h3></div>
+    <div class="subject"><i class="fa-solid fa-book-open"></i><h3>Українська мова</h3></div>
+    <div class="subject"><i class="fa-solid fa-landmark"></i><h3>Історія України</h3></div>
+  </div>
+</section>
+
+<section class="process">
+  <h2>Як стати учнем у SpaceHub?</h2>
+  <div class="process-steps">
+    <div class="step"><div class="icon">📝</div>Заповни заявку</div>
+    <div class="step"><div class="icon">📩</div>Отримай підтвердження</div>
+    <div class="step"><div class="icon">👩‍🏫</div>Познайомся з репетитором</div>
+    <div class="step"><div class="icon">🚀</div>Розпочни навчання</div>
+  </div>
+</section>
+
+<section class="catalog">
+  <h2>Каталог напрямків</h2>
+  <div class="carousel">
+
+
+    <div class="card">
+      <img src="img/photo8.jpg">
+      <div class="card-body"><span class="status active">Активний</span><h3>Стажування репетиторів-волонтерів</h3><p>Програма, що
+допомагає новим волонтерам адаптуватися, отримати підтримку
+та навчитися ефективно викладати. Це чудова можливість
+розвинути навички наставництва та стати частиною освітньої
+спільноти.</p></div>
+    </div>
+
+    <div class="card">
+      <img src="img/photo1.jpg">
+      <div class="card-body"><span class="status active">Активний</span><h3>Англійська з нуля</h3><p>Курс для тих, хто тільки починає
+вивчати англійську. Мета — сформувати базові мовні навички для
+повсякденного спілкування. Підходить для учнів будь-якого віку, які
+раніше не мали досвіду вивчення мови.</p></div>
+    </div>
+
+    <div class="card">
+      <img src="img/photo4.jpg">
+      <div class="card-body"><span class="status finished">Завершений</span><h3>Спікінг клаб</h3><p>Проєкт, що складався з серії зустрічей
+для практики розмовної англійської. Учасники вдосконалювали
+вимову, словниковий запас та впевненість у спілкуванні.</p></div>
+    </div>
+
+    <div class="card">
+      <img src="img/photo2.jpg">
+      <div class="card-body"><span class="status finished">Завершений</span><h3>Курс з італійської</h3><p>Освітній курс для початківців, який
+охоплював основи граматики, лексики та культури Італії. Мета —
+надати учасникам базу для подальшого вивчення мови.</p></div>
+    </div>
+    <div class="card">
+      <img src="img/photo3.jpg">
+      <div class="card-body"><span class="status finished">Завершений</span><h3>Курс з іспанської</h3><p>Проєкт, спрямований на
+опанування базової іспанської мови. Учасники знайомилися з
+основами граматики, корисними фразами та культурними
+особливостями іспаномовних країн.</p></div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
